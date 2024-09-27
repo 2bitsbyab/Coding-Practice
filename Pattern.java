@@ -9,7 +9,7 @@ public class Pattern {
         int n = sc.nextInt();
         sc.close();
         // patternRectangle(n);
-        patternNumberCrown(n);
+        butterflyPattern(n);
     }
 
     static void patternRectangle(int n){
@@ -193,4 +193,191 @@ public class Pattern {
         }
         System.out.print(buffer.toString());
     }
+    static void increasingNumberTriangle(int n){
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        int start = 1;
+        for(int i = 1; i<=n; i++){
+            for(int j=1; j<=i; j++){
+                buffer.append(start++ + " ");
+            }
+            if(i<n)buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+
+    static void increasingLetterTriangle(int n){
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=1; i<=n; i++){
+            // int start = 65; //ASCII for A
+            for(int j=0; j<i; j++){
+                buffer.append((char) (65+j));
+            }
+            if(i<n)buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+
+    static void reverseIncreasingLetterTriangle(int n){
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=0; i<n; i++){
+            // int start = 65; //ASCII for A
+            for(int j=0; j<n-i; j++){
+                buffer.append((char) (65+j));
+            }
+            if(i<n-1)buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+
+    static void alphaRampPattern(int n){
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=i;j++){
+                buffer.append((char) (65+i));
+            }
+            if(i<n-1)buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+    static void alphaHillPattern(int n){
+        //      A  
+        //     ABA 
+        //    ABCBA
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=0; i<n; i++){
+            //space
+            for(int j = 0; j<n-i-1; j++)
+                buffer.append(' ');
+
+            //alphabets
+            int strt = 65;//ASCII value of A
+            for(int j = 0; j< 2*i + 1; j++){
+                buffer.append((char) strt);
+                if(j<i)
+                    strt++;
+                else
+                    strt--;
+            }
+
+            //space
+            for(int j = 0; j<n-i-1; j++)
+                buffer.append(' ');
+
+            if(i<n-1){
+                buffer.append('\n');
+            }
+        }
+        System.out.print(buffer.toString());
+    }
+    static void aplhaTrianglePattern(int n){
+        // C
+        // BC
+        // ABC
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i = 1; i<=n; i++){
+            int start = 65 + n - i;
+            for(int j=1;j<=i; j++){
+                buffer.append((char)start++);
+            }
+            if(i<n)
+                buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+    static void symmetricVoidPattern(int n){
+        // **********
+        // ****  ****
+        // ***    ***
+        // **      **
+        // *        *
+        // *        *
+        // **      **
+        // ***    ***
+        // ****  ****
+        // **********
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=0; i<n; i++){
+            //star
+            for(int j = 0; j < n - i; j++)
+                buffer.append('*');
+            //space
+            for(int j=0; j<2*i; j++)
+                buffer.append(' ');
+            //start
+            for(int j = 0; j < n - i; j++)
+                buffer.append('*');
+            if(i<n)
+                buffer.append('\n');
+        }
+        for(int i=1; i<=n; i++){
+            //star
+            for(int j = 0; j < i; j++)
+                buffer.append('*');
+            //space
+            for(int j=0; j<2*(n-i); j++)
+                buffer.append(' ');
+            //start
+            for(int j = 0; j <i; j++)
+                buffer.append('*');
+            if(i<n)
+                buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+    static void butterflyPattern(int n){
+        // *    *
+        // **  **
+        // ******
+        // **  **
+        // *    *
+        if(n<1)return;
+        if(n==1){
+            System.out.print('*');
+            return;
+        }
+        StringBuffer buffer=new StringBuffer();
+        int elseSpaceCount = 2;
+        int elseStarCount = n-1;
+        for( int i = 1; i <= 2*n - 1; i++){
+            if(i<=n){
+                //star
+                for(int j = 0; j<i ;j++)
+                    buffer.append('*');
+                //space
+                for(int j = 0; j< 2*(n-i); j++)
+                    buffer.append(' ');
+                //star
+                for(int j = 0; j<i ;j++)
+                    buffer.append('*');
+            }else{
+                //star
+                for(int j=0; j<elseStarCount; j++)
+                    buffer.append('*');
+                //space
+                for(int j = 0; j< elseSpaceCount; j++)
+                    buffer.append(' ');
+                //star
+                for(int j=0; j<elseStarCount; j++)
+                    buffer.append('*');
+                elseSpaceCount+=2;
+                elseStarCount--;
+            }
+            if(i<2*n-1)
+                buffer.append('\n');    
+        }
+        System.out.print(buffer.toString());
+    }
+    // static void increasingNumberTriangle(int n){
+    //     if(n<1)return;
+    //     StringBuffer buffer=new StringBuffer();
+
+    //     System.out.print(buffer.toString());
+    // }
 }
