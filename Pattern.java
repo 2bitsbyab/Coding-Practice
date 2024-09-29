@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import static java.lang.Math.min;
 public class Pattern {
     /*
      * this class have all pattern problems solution from striver A2Z
@@ -9,10 +9,13 @@ public class Pattern {
         int n = sc.nextInt();
         sc.close();
         // patternRectangle(n);
-        butterflyPattern(n);
+        patternRectangle(n);
     }
 
     static void patternRectangle(int n){
+        // ***
+        // ***
+        // ***
         StringBuffer buffer = new StringBuffer();
 
         for(int i = 0 ; i < n; i++){
@@ -28,6 +31,9 @@ public class Pattern {
     }
 
     static void patternRightTriangle(int n){
+        // *
+        // **
+        // ***
         if(n <= 0)return;
         StringBuffer buffer = new StringBuffer();
         for(int i=0; i<n; i++){
@@ -41,6 +47,9 @@ public class Pattern {
     }
 
     static void patternRightTriangleNum(int n){
+        // 1
+        // 12
+        // 123
         StringBuffer buffer = new StringBuffer();
         for(int i=0; i<n; i++){
             for(int j=0; j<=i; j++){
@@ -53,6 +62,9 @@ public class Pattern {
     }
 
     static void patternRightTriangleSingleNum(int n){
+        // 1
+        // 22
+        // 333
         StringBuffer buffer = new StringBuffer();
         for(int i=1; i<=n; i++){
             for(int j = 1; j<=i; j++){
@@ -65,6 +77,9 @@ public class Pattern {
     }
 
     static void patternRightTriangleUpsideDown(int n){
+        // ***
+        // **
+        // *
         if(n <= 0)return;
         StringBuffer buffer = new StringBuffer();
         for(int i=0; i<n; i++){
@@ -78,6 +93,9 @@ public class Pattern {
     }
 
     static void patternRightTriangleNumUpsideDown(int n){
+        // 123
+        // 12
+        // 1
         StringBuffer buffer = new StringBuffer();
         for(int i=n; i>0; i--){
             for(int j = 1; j<=i; j++){
@@ -90,6 +108,9 @@ public class Pattern {
     }
 
     static void patternPyramid(int n){
+        //      *   
+        //     ***  
+        //    ***** 
         if(n<1 && n>25)return;
         StringBuffer buffer = new StringBuffer();
         for(int i=0; i < n; i++){
@@ -108,6 +129,9 @@ public class Pattern {
     }
 
     static void patternInvertedPyramid(int n){
+        // ***** 
+        //  ***  
+        //   *   
         if(n<1 && n>25)return;
         StringBuffer buffer = new StringBuffer();
         for(int i=0; i < n; i++){
@@ -126,12 +150,23 @@ public class Pattern {
     }
 
     static void patternDiamondStar(int n){
+    //      *   
+    //     ***  
+    //    ***** 
+    //    ***** 
+    //     ***  
+    //      * 
         patternPyramid(n);
         System.out.println();
         patternInvertedPyramid(n);
     }
 
     static void patternhalfDiamondStar(int n){
+        // *
+        // **
+        // ***
+        // **
+        // *
         if(n<1 && n>25)return;
         patternRightTriangle(n);
         if(n>1)
@@ -142,6 +177,9 @@ public class Pattern {
     }
 
     static void patternBinaryTriangle(int n){
+        // 1
+        // 01
+        // 101
         if(n<1)return;
         StringBuffer buffer = new StringBuffer();
         for(int i=1; i<=n; i++){
@@ -157,6 +195,9 @@ public class Pattern {
     }
 
     static void patternNumberCrown(int n){
+        // 1    1
+        // 12  21
+        // 123321
         if(n<1)return;
         StringBuffer buffer = new StringBuffer();
         int space = 2*(n - 1);
@@ -194,12 +235,15 @@ public class Pattern {
         System.out.print(buffer.toString());
     }
     static void increasingNumberTriangle(int n){
+        // 1
+        // 23
+        // 456
         if(n<1)return;
         StringBuffer buffer=new StringBuffer();
         int start = 1;
         for(int i = 1; i<=n; i++){
             for(int j=1; j<=i; j++){
-                buffer.append(start++ + " ");
+                buffer.append(start++);
             }
             if(i<n)buffer.append('\n');
         }
@@ -207,6 +251,9 @@ public class Pattern {
     }
 
     static void increasingLetterTriangle(int n){
+        // A
+        // AB
+        // ABC
         if(n<1)return;
         StringBuffer buffer=new StringBuffer();
         for(int i=1; i<=n; i++){
@@ -220,6 +267,9 @@ public class Pattern {
     }
 
     static void reverseIncreasingLetterTriangle(int n){
+        // ABC
+        // AB
+        // A
         if(n<1)return;
         StringBuffer buffer=new StringBuffer();
         for(int i=0; i<n; i++){
@@ -233,6 +283,9 @@ public class Pattern {
     }
 
     static void alphaRampPattern(int n){
+        // A
+        // BB
+        // CCC
         if(n<1)return;
         StringBuffer buffer=new StringBuffer();
         for(int i=0;i<n;i++){
@@ -374,10 +427,48 @@ public class Pattern {
         }
         System.out.print(buffer.toString());
     }
-    // static void increasingNumberTriangle(int n){
-    //     if(n<1)return;
-    //     StringBuffer buffer=new StringBuffer();
-
-    //     System.out.print(buffer.toString());
-    // }
+    static void hollowRectanglePattern(int n){
+        // ***
+        // * *
+        // ***
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        for(int i=0;i<n; i++){
+            if(i==0 || i==n-1){
+                for(int j = 0; j<n; j++)
+                    buffer.append('*');
+            }else{
+                buffer.append('*');
+                for(int j = 0; j<n-2; j++)
+                    buffer.append(' ');
+                buffer.append('*');
+            }
+            if(i<n-1)
+                buffer.append('\n');
+        }
+        System.out.print(buffer.toString());
+    }
+    static void theNumberPattern(int n){
+        // 33333
+        // 32223
+        // 32123
+        // 32223
+        // 33333
+        if(n<1)return;
+        StringBuffer buffer=new StringBuffer();
+        //the solution lies in knowing that all the numbers are n - min distance from edge of the matriX
+        for(int i = 0; i < 2*n - 1; i++){
+            for(int j = 0; j < 2*n - 1; j++){
+                int top = i;
+                int left = j;
+                int bottom = (2*n - 2) - i;
+                int right = (2*n - 2) - j;
+                buffer.append(n - min(min(min(top, left),bottom),right));
+            }
+            if(i<2*n-1){
+                buffer.append('\n');
+            }
+        }
+        System.out.print(buffer.toString());
+    }
 }
