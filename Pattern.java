@@ -9,7 +9,7 @@ public class Pattern {
         int n = sc.nextInt();
         sc.close();
         // patternRectangle(n);
-        patternRectangle(n);
+        theNumberPattern(n);
     }
 
     static void patternRectangle(int n){
@@ -465,7 +465,7 @@ public class Pattern {
                 int right = (2*n - 2) - j;
                 buffer.append(n - min(min(min(top, left),bottom),right));
             }
-            if(i<2*n-1){
+            if(i<2*n-2){
                 buffer.append('\n');
             }
         }
